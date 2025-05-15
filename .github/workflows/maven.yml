@@ -12,7 +12,6 @@ permissions:
   actions: read
   security-events: write
   packages: read
-  dependencies: write
 
 jobs:
   build:
