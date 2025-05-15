@@ -20,8 +20,16 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    - name: Set up Maven 3.9.x
+      uses: s4u/setup-maven-action@v1
+      with:
+        maven-version: '3.9.6'
+
     - name: Check Java version
       run: java -version
+
+    - name: Check Maven version
+      run: mvn -version
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
