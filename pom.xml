@@ -35,10 +35,23 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.11.0</version>
         <configuration>
-          <release>21</release> <!-- Alternativa moderna a source/target -->
+          <source>21</source>
+          <target>21</target>
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>bo.edu.ucb.App</mainClass> <!-- Asegúrate de tener esta clase -->
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -47,14 +60,6 @@
           <mainClass>bo.edu.ucb.App</mainClass> <!-- Clase principal corregida -->
         </configuration>
       </plugin>
-      <plugin>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>exec-maven-plugin</artifactId>
-      <version>3.1.0</version>
-      <configuration>
-        <mainClass>org.example.App</mainClass>
-      </configuration>
-    </plugin>
 
       <!-- Otros plugins si los necesitas -->
     </plugins>
