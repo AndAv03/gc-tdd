@@ -12,8 +12,7 @@ permissions:
   actions: read
   security-events: write
   packages: read
-  # Lo más importante:
-  dependency-graph: write
+  dependencies: write
 
 jobs:
   build:
