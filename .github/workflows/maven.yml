@@ -6,6 +6,15 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+  id-token: write
+  actions: read
+  security-events: write
+  packages: read
+  # Lo más importante:
+  dependency-graph: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
