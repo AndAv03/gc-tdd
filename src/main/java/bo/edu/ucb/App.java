@@ -104,7 +104,7 @@ public class App {
 
                 if (juego.isBoardFull()) {
                     juego.printBoard();
-                    System.out.println("¡Empate! No hay más espacios.");
+                    System.out.println("Empate! No hay más espacios.");
                     break;
                 }
 
