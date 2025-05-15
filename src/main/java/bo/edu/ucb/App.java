@@ -17,7 +17,6 @@ public class App {
         if (y < 0 || y >= 3) throw new IllegalArgumentException("Y está fuera del tablero");
         if (board[x][y] != ' ') throw new IllegalArgumentException("Espacio ya ocupado");
 
-        // Validar carácter del jugador
         if (currentPlayer != 'X' && currentPlayer != '+') {
             throw new IllegalStateException("Jugador inválido: " + currentPlayer);
         }
@@ -35,21 +34,18 @@ public class App {
     }
 
     public char checkWinner() {
-        // Revisión de filas
         for (int i = 0; i < 3; i++)
             if (board[i][0] != ' ' &&
                 board[i][0] == board[i][1] &&
                 board[i][1] == board[i][2])
                 return board[i][0];
 
-        // Revisión de columnas
         for (int j = 0; j < 3; j++)
             if (board[0][j] != ' ' &&
                 board[0][j] == board[1][j] &&
                 board[1][j] == board[2][j])
                 return board[0][j];
 
-        // Revisión de diagonales
         if (board[0][0] != ' ' &&
             board[0][0] == board[1][1] &&
             board[1][1] == board[2][2])
@@ -61,6 +57,14 @@ public class App {
             return board[0][2];
 
         return ' ';
+    }
+
+    public boolean isBoardFull() {
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                if (board[i][j] == ' ')
+                    return false;
+        return true;
     }
 
     public void printBoard() {
@@ -87,7 +91,7 @@ public class App {
 
                 System.out.print("Ingrese Y (0-2): ");
                 int y = scanner.nextInt();
-                scanner.nextLine(); // Limpiar el salto de línea
+                scanner.nextLine(); // Limpia salto de línea
 
                 juego.placePiece(x, y);
 
@@ -98,9 +102,15 @@ public class App {
                     break;
                 }
 
+                if (juego.isBoardFull()) {
+                    juego.printBoard();
+                    System.out.println("¡Empate! No hay más espacios.");
+                    break;
+                }
+
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
-                scanner.nextLine(); // Limpiar entrada inválida para evitar bucle
+                scanner.nextLine(); // Limpia entrada inválida
             }
         }
 
