@@ -15,7 +15,7 @@ public class App {
     public void placePiece(int x, int y) {
         if (x < 0 || x >= 3) throw new IllegalArgumentException("X está fuera del tablero");
         if (y < 0 || y >= 3) throw new IllegalArgumentException("Y está fuera del tablero");
-        if (board[x][y] != ' ') throw new IllegalArgumentException("Espacio ya ocupado");
+        //if (board[x][y] != ' ') throw new IllegalArgumentException("Espacio ya ocupado");
 
         if (currentPlayer != 'X' && currentPlayer != '+') {
             throw new IllegalStateException("Jugador inválido: " + currentPlayer);
